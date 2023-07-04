@@ -4,7 +4,7 @@ import { Color } from 'three'
 import { Background, PPSwitch } from 'agape-sdk/src/main'
 import { SceneKit } from '../Runner/SceneKit'
 import { GameModeAdapter } from '../Runner/GameModeAdapter'
-import { EventAnimation } from './EventAnimation/EventAnimation'
+import { WalkerContent } from './WalkerContent'
 export function Walker() {
   return (
     <>
@@ -24,12 +24,19 @@ export function Walker() {
         }}
       >
         <PPSwitch useStore={useStore}></PPSwitch>
-        <GameModeAdapter useStore={useStore}></GameModeAdapter>
+        <group
+          onClick={(e) => {
+            console.log(e?.object?.name)
+            window.dispatchEvent(new CustomEvent(e.object.name, { detail: e.object.name }))
+          }}
+        >
+          <GameModeAdapter useStore={useStore}></GameModeAdapter>
+        </group>
         <SceneKit useStore={useStore}></SceneKit>
         <Background useStore={useStore}></Background>
         <BGColor></BGColor>
 
-        <EventAnimation event={''}></EventAnimation>
+        <WalkerContent></WalkerContent>
       </Canvas>
 
       <div id='guilayer'></div>
