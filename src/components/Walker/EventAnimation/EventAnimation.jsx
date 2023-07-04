@@ -1,6 +1,5 @@
 import { useGLTF } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
-import { LoaderGLB } from 'agape-sdk/src/main'
 import { useEffect, useRef } from 'react'
 import { AnimationMixer } from 'three'
 import { clone } from 'three/examples/jsm/utils/SkeletonUtils'
